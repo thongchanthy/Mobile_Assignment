@@ -1,12 +1,12 @@
 # Mobile Application Project (Laravel REST API + Flutter CRUD)
 
-This repository contains the complete mobile application assignment solution:
+គម្រោង Assignment ពេញលេញ៖
 1. **Backend**: Laravel 11 RESTful API (`laravel_api/`)
-2. **Frontend**: Flutter Material 3 Cross-platform CRUD Application with Device Preview & Device Image Picker (`flutter_product_crud/`)
+2. **Frontend**: Flutter Material 3 CRUD Application with Device Preview & Image Upload (`flutter_product_crud/`)
 
 ---
 
-## 📁 Project Structure
+## 📁 រចនាសម្ព័ន្ធគម្រោង (Project Structure)
 
 ```
 Mobile/
@@ -39,41 +39,125 @@ Mobile/
 
 ---
 
-## 🚀 Getting Started
+## 🚀 របៀបដំឡើង និងដំណើរការសម្រាប់អ្នក Clone ថ្មី (Setup Instructions)
 
-### 1. Run Laravel Backend (`laravel_api`)
+### ជំហានទី ១៖ Clone កូដពី GitHub
+```bash
+git clone https://github.com/kreombroskoy-bbu/Mobile.git
+cd Mobile
+```
+
+---
+
+### ជំហានទី ២៖ ដំឡើង និងដំណើរការ Laravel Backend (`laravel_api`)
+
+បើក Terminal ចូលទៅក្នុង folder `laravel_api`៖
 ```bash
 cd laravel_api
-composer install
-php artisan migrate --seed
-php artisan storage:link
-php artisan serve --host=0.0.0.0 --port=8000
 ```
-- API Base URL: `http://127.0.0.1:8000/api`
 
-### 2. Run Flutter Client (`flutter_product_crud`)
+1. **ដំឡើង Packages (Composer):**
+   ```bash
+   composer install
+   ```
+
+2. **បង្កើត file `.env` និង App Key:**
+   - លើ Windows (CMD/PowerShell):
+     ```bash
+     copy .env.example .env
+     php artisan key:generate
+     ```
+   - លើ Mac/Linux:
+     ```bash
+     cp .env.example .env
+     php artisan key:generate
+     ```
+
+3. **រៀបចំ Database និង Seed ទិន្នន័យគំរូ:**
+   - **ជម្រើសទី ១ (ងាយស្រួលបំផុត - SQLite):**
+     មិនបាច់បើក XAMPP ឬបង្កើត database អ្វីឡើយ គ្រាន់តែវាយ៖
+     ```bash
+     php artisan migrate --seed
+     ```
+     *(បើវាសួរថាបង្កើត database.sqlite ឬអត់ សូមចុច Enter ឬវាយ `yes`)*
+
+   - **ជម្រើសទី ២ (ប្រើ MySQL / XAMPP):**
+     បើក XAMPP Start Apache & MySQL រួចចូល `http://localhost/phpmyadmin` បង្កើត database ឈ្មោះ `laravel` (ឬ `mobile_db`)។
+     បន្ទាប់មកបើក file `.env` កែសម្រួល៖
+     ```env
+     DB_CONNECTION=mysql
+     DB_HOST=127.0.0.1
+     DB_PORT=3306
+     DB_DATABASE=laravel
+     DB_USERNAME=root
+     DB_PASSWORD=
+     ```
+     រួចរត់ migration៖
+     ```bash
+     php artisan migrate --seed
+     ```
+
+4. **បង្កើត Storage Link សម្រាប់រូបភាព:**
+   ```bash
+   php artisan storage:link
+   ```
+
+5. **Start Laravel Server:**
+   ```bash
+   php artisan serve --host=0.0.0.0 --port=8000
+   ```
+   *Laravel API នឹងដំណើរការនៅ៖ `http://127.0.0.1:8000/api`*
+
+---
+
+### ជំហានទី ៣៖ ដំឡើង និងដំណើរការ Flutter Frontend (`flutter_product_crud`)
+
+បើក Terminal ថ្មីមួយទៀត រួចចូលទៅក្នុង folder `flutter_product_crud`៖
 ```bash
 cd flutter_product_crud
-flutter pub get
-flutter run -d chrome
-# or on Android emulator:
-# flutter run
 ```
+
+1. **ទាញយក Flutter Packages:**
+   ```bash
+   flutter pub get
+   ```
+
+2. **ដំណើរការ App (Run Application):**
+   - **រត់លើ Web (Chrome - ស្រួលមើល និងមាន Device Preview):**
+     ```bash
+     flutter run -d chrome
+     ```
+   - **រត់លើ Android Emulator:**
+     ```bash
+     flutter run
+     ```
+   - **រត់លើ Windows Desktop:**
+     ```bash
+     flutter run -d windows
+     ```
+
+---
+
+## ⚙️ ការកំណត់ Base URL ក្នុង Flutter (API Configuration)
+
+- ពេលរត់លើ **Chrome (Web) ឬ Windows**: App នឹងភ្ជាប់ទៅ `http://127.0.0.1:8000/api` ដោយស្វ័យប្រវត្តិ។
+- ពេលរត់លើ **Android Emulator**: App នឹងភ្ជាប់ទៅ `http://10.0.2.2:8000/api` ដោយស្វ័យប្រវត្តិ។
+- ប្រសិនបើចង់ប្តូរ IP ដោយខ្លួនឯង៖ អាចចុចលើ **Icon Settings (⚙️)** នៅជ្រុងខាងស្តាំខាងលើនៃ App រួចបញ្ចូល Base URL ដែលចង់បានភ្លាមៗ!
 
 ---
 
 ## 📡 API Endpoints
 
 ### Categories:
-- `GET /api/categories` - List all categories
-- `POST /api/categories` - Create new category
-- `GET /api/categories/{id}` - Get category by ID
-- `PUT /api/categories/{id}` - Update category
-- `DELETE /api/categories/{id}` - Delete category
+- `GET /api/categories` - បង្ហាញបញ្ជីប្រភេទទាំងអស់
+- `POST /api/categories` - បន្ថែមប្រភេទថ្មី
+- `GET /api/categories/{id}` - បង្ហាញប្រភេទតាម ID
+- `PUT /api/categories/{id}` - កែប្រែប្រភេទ
+- `DELETE /api/categories/{id}` - លុបប្រភេទ
 
 ### Products:
-- `GET /api/products` - List all products (supports `?search=` and `?category_id=`)
-- `POST /api/products` - Create new product (supports device image upload)
-- `GET /api/products/{id}` - Get product by ID
-- `PUT /api/products/{id}` - Update product
-- `DELETE /api/products/{id}` - Delete product (soft delete `isDeleted = 1`)
+- `GET /api/products` - បង្ហាញបញ្ជីទំនិញ (គាំទ្រ `?search=` និង `?category_id=`)
+- `POST /api/products` - បន្ថែមទំនិញថ្មី (គាំទ្រ Image upload ពី Device)
+- `GET /api/products/{id}` - បង្ហាញទំនិញតាម ID
+- `PUT /api/products/{id}` - កែប្រែទំនិញ
+- `DELETE /api/products/{id}` - លុបទំនិញ (Soft delete `isDeleted = 1`)
