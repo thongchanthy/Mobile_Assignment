@@ -1,8 +1,8 @@
 @echo off
-title Flutter Mobile App
+title Mobile Application
 echo ==========================================
-echo    Starting Flutter App in Chrome
+echo    Starting Mobile App in Chrome
 echo ==========================================
-cd /d "%~dp0flutter_product_crud"
+cd /d "%~dp0mobile_app"
 flutter run -d chrome
 pause

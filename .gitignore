@@ -8,37 +8,37 @@ Thumbs.db
 *.ipr
 *.iws
 
-# Laravel Backend
-laravel_api/vendor/
-laravel_api/node_modules/
-laravel_api/.env
-laravel_api/.env.backup
-laravel_api/.env.production
-laravel_api/public/storage
-laravel_api/public/build
-laravel_api/public/hot
-laravel_api/storage/*.key
-laravel_api/storage/logs/*
-laravel_api/storage/framework/cache/data/*
-laravel_api/storage/framework/sessions/*
-laravel_api/storage/framework/views/*
-laravel_api/bootstrap/cache/*.php
-!laravel_api/storage/framework/cache/.gitignore
-!laravel_api/storage/framework/sessions/.gitignore
-!laravel_api/storage/framework/views/.gitignore
-!laravel_api/bootstrap/cache/.gitignore
+# Backend API
+backend_api/vendor/
+backend_api/node_modules/
+backend_api/.env
+backend_api/.env.backup
+backend_api/.env.production
+backend_api/public/storage
+backend_api/public/build
+backend_api/public/hot
+backend_api/storage/*.key
+backend_api/storage/logs/*
+backend_api/storage/framework/cache/data/*
+backend_api/storage/framework/sessions/*
+backend_api/storage/framework/views/*
+backend_api/bootstrap/cache/*.php
+!backend_api/storage/framework/cache/.gitignore
+!backend_api/storage/framework/sessions/.gitignore
+!backend_api/storage/framework/views/.gitignore
+!backend_api/bootstrap/cache/.gitignore
 
-# Flutter Frontend
-flutter_product_crud/.dart_tool/
-flutter_product_crud/.flutter-plugins
-flutter_product_crud/.flutter-plugins-dependencies
-flutter_product_crud/.pub-cache/
-flutter_product_crud/.pub/
-flutter_product_crud/build/
-flutter_product_crud/windows/flutter/ephemeral/
-flutter_product_crud/android/.gradle/
-flutter_product_crud/android/local.properties
-flutter_product_crud/ios/.symlinks/
-flutter_product_crud/ios/Flutter/Flutter.framework
-flutter_product_crud/ios/Flutter/Flutter.podspec
-flutter_product_crud/ios/Pods/
+# Mobile App (Frontend)
+mobile_app/.dart_tool/
+mobile_app/.flutter-plugins
+mobile_app/.flutter-plugins-dependencies
+mobile_app/.pub-cache/
+mobile_app/.pub/
+mobile_app/build/
+mobile_app/windows/flutter/ephemeral/
+mobile_app/android/.gradle/
+mobile_app/android/local.properties
+mobile_app/ios/.symlinks/
+mobile_app/ios/Flutter/Flutter.framework
+mobile_app/ios/Flutter/Flutter.podspec
+mobile_app/ios/Pods/

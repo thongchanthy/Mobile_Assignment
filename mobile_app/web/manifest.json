@@ -1,6 +1,6 @@
 {
-    "name": "flutter_product_crud",
-    "short_name": "flutter_product_crud",
+    "name": "Product Management",
+    "short_name": "ProductApp",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
