@@ -1,0 +1,44 @@
+# OS & Editor
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Laravel Backend
+laravel_api/vendor/
+laravel_api/node_modules/
+laravel_api/.env
+laravel_api/.env.backup
+laravel_api/.env.production
+laravel_api/public/storage
+laravel_api/public/build
+laravel_api/public/hot
+laravel_api/storage/*.key
+laravel_api/storage/logs/*
+laravel_api/storage/framework/cache/data/*
+laravel_api/storage/framework/sessions/*
+laravel_api/storage/framework/views/*
+laravel_api/bootstrap/cache/*.php
+!laravel_api/storage/framework/cache/.gitignore
+!laravel_api/storage/framework/sessions/.gitignore
+!laravel_api/storage/framework/views/.gitignore
+!laravel_api/bootstrap/cache/.gitignore
+
+# Flutter Frontend
+flutter_product_crud/.dart_tool/
+flutter_product_crud/.flutter-plugins
+flutter_product_crud/.flutter-plugins-dependencies
+flutter_product_crud/.pub-cache/
+flutter_product_crud/.pub/
+flutter_product_crud/build/
+flutter_product_crud/windows/flutter/ephemeral/
+flutter_product_crud/android/.gradle/
+flutter_product_crud/android/local.properties
+flutter_product_crud/ios/.symlinks/
+flutter_product_crud/ios/Flutter/Flutter.framework
+flutter_product_crud/ios/Flutter/Flutter.podspec
+flutter_product_crud/ios/Pods/
