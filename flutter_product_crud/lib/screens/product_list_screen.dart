@@ -504,9 +504,9 @@ class _ProductListScreenState extends State<ProductListScreen> {
                     width: 66,
                     height: 66,
                     color: const Color(0xFFF8FAFC),
-                    child: product.productImage != null && product.productImage!.isNotEmpty
+                    child: product.displayImageUrl != null && product.displayImageUrl!.isNotEmpty
                         ? Image.network(
-                            product.productImage!,
+                            product.displayImageUrl!,
                             fit: BoxFit.cover,
                             errorBuilder: (context, error, stackTrace) => const Icon(
                               Icons.image_not_supported_outlined,

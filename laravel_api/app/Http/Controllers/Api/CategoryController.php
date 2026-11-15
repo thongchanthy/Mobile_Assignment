@@ -48,7 +48,7 @@ class CategoryController extends Controller
         if ($imageFile) {
             $filename = time() . '_' . uniqid() . '.' . ($imageFile->getClientOriginalExtension() ?: 'jpg');
             $path = $imageFile->storeAs('categories', $filename, 'public');
-            $data['image'] = url('storage/' . $path);
+            $data['image'] = url('api/storage/' . $path);
         } elseif ($request->filled('image') && is_string($request->input('image'))) {
             $data['image'] = $request->input('image');
         }
@@ -117,7 +117,7 @@ class CategoryController extends Controller
         if ($imageFile) {
             $filename = time() . '_' . uniqid() . '.' . ($imageFile->getClientOriginalExtension() ?: 'jpg');
             $path = $imageFile->storeAs('categories', $filename, 'public');
-            $data['image'] = url('storage/' . $path);
+            $data['image'] = url('api/storage/' . $path);
         } elseif ($request->filled('image') && is_string($request->input('image'))) {
             $data['image'] = $request->input('image');
         }

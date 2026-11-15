@@ -76,7 +76,7 @@ class ProductController extends Controller
         if ($uploadedFile) {
             $filename = time() . '_' . uniqid() . '.' . ($uploadedFile->getClientOriginalExtension() ?: 'jpg');
             $path = $uploadedFile->storeAs('products', $filename, 'public');
-            $data['ProductImage'] = url('storage/' . $path);
+            $data['ProductImage'] = url('api/storage/' . $path);
         } elseif ($request->filled('ProductImage') && is_string($request->input('ProductImage'))) {
             $data['ProductImage'] = $request->input('ProductImage');
         }
@@ -153,7 +153,7 @@ class ProductController extends Controller
         if ($uploadedFile) {
             $filename = time() . '_' . uniqid() . '.' . ($uploadedFile->getClientOriginalExtension() ?: 'jpg');
             $path = $uploadedFile->storeAs('products', $filename, 'public');
-            $data['ProductImage'] = url('storage/' . $path);
+            $data['ProductImage'] = url('api/storage/' . $path);
         } elseif ($request->filled('ProductImage') && is_string($request->input('ProductImage'))) {
             $data['ProductImage'] = $request->input('ProductImage');
         }

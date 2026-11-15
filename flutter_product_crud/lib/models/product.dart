@@ -1,3 +1,4 @@
+import '../config/api_config.dart';
 import 'category.dart';
 
 class Product {
@@ -28,6 +29,45 @@ class Product {
     this.isDeleted = 0,
     this.category,
   });
+
+  /// Automatically resolves image URL, converting relative paths or localhost
+  /// to the current platform-aware API base and ensuring CORS-compatible /api/storage route.
+  String? get displayImageUrl {
+    if (productImage == null || productImage!.trim().isEmpty) return null;
+    final img = productImage!.trim();
+
+    // If it's a 3rd party web image (Unsplash, imgur, etc.)
+    if (img.startsWith('http://') || img.startsWith('https://')) {
+      if (!img.contains('127.0.0.1') &&
+          !img.contains('localhost') &&
+          !img.contains('10.0.2.2')) {
+        return img;
+      }
+    }
+
+    try {
+      final baseUri = Uri.parse(ApiConfig.baseUrl);
+      final hostPrefix = '${baseUri.scheme}://${baseUri.host}:${baseUri.port}';
+
+      String path = img;
+      if (path.startsWith('http://') || path.startsWith('https://')) {
+        path = Uri.parse(path).path;
+      }
+
+      if (!path.startsWith('/')) {
+        path = '/$path';
+      }
+
+      // Convert /storage/ to /api/storage/ for full CORS header support
+      if (path.startsWith('/storage/')) {
+        path = '/api$path';
+      }
+
+      return '$hostPrefix$path';
+    } catch (_) {
+      return img;
+    }
+  }
 
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(

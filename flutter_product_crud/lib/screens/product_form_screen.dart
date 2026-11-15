@@ -116,6 +116,14 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
     }
   }
 
+  String _resolveImageUrl(String rawUrl) {
+    return Product(
+      productName: '',
+      categoryID: 0,
+      productImage: rawUrl,
+    ).displayImageUrl ?? rawUrl;
+  }
+
   void _showImagePickerSheet() {
     showModalBottomSheet(
       context: context,
@@ -475,7 +483,7 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8),
                               child: Image.network(
-                                _imageController.text.trim(),
+                                _resolveImageUrl(_imageController.text.trim()),
                                 height: 80,
                                 fit: BoxFit.cover,
                                 errorBuilder: (context, error, stackTrace) => const Text(

@@ -145,9 +145,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(16),
-                      child: p.productImage != null && p.productImage!.isNotEmpty
+                      child: p.displayImageUrl != null && p.displayImageUrl!.isNotEmpty
                           ? Image.network(
-                              p.productImage!,
+                              p.displayImageUrl!,
                               fit: BoxFit.contain,
                               errorBuilder: (context, error, stackTrace) => const Center(
                                 child: Icon(Icons.image_not_supported_outlined, size: 50, color: Color(0xFF94A3B8)),
