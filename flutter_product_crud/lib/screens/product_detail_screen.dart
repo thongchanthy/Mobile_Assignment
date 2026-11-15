@@ -92,15 +92,25 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     final isLowStock = p.qty < 5;
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF8FAFC),
+      backgroundColor: const Color(0xFFF6F8FB),
       appBar: AppBar(
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Color(0xFF3B82F6), Color(0xFF2563EB)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+        ),
+        foregroundColor: Colors.white,
         title: const Text(
           'Product Details',
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: Color(0xFF0F172A)),
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.edit_outlined),
+            icon: const Icon(Icons.edit_outlined, color: Colors.white),
             tooltip: 'Edit',
             onPressed: () async {
               final result = await Navigator.push(
@@ -113,7 +123,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             },
           ),
           IconButton(
-            icon: const Icon(Icons.delete_outline_rounded, color: Color(0xFFEF4444)),
+            icon: const Icon(Icons.delete_outline_rounded, color: Colors.white),
             tooltip: 'Delete',
             onPressed: _deleteProduct,
           ),
